@@ -33,4 +33,19 @@ class CarouselViewModel {
         }
         completion()
     }
+    
+    // MARK: - Private funcs
+    private func calcSize(count: CGFloat, itemSize: CGFloat, offset: CGFloat) {
+        let newSpacing: CGFloat = 1
+        let newArc = CGFloat.pi * 2
+        let newRadius = max(itemSize * newSpacing / 2, itemSize * newSpacing / 2 / tan(newArc/2/count))
+        let angle = offset / count * newArc
+        let transform = CATransform3DIdentity
+        
+        let someResult = CATransform3DTranslate(transform,
+                                                newRadius * sin(angle),
+                                                0.0,
+                                                newRadius * cos(angle) - newRadius)
+        print(someResult)
+    }
 }
