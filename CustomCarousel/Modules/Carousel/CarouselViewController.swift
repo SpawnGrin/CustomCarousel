@@ -12,12 +12,11 @@ class CarouselViewController: UIViewController {
     
     // MARK: - IBOutlets
     @IBOutlet weak var carouselView: iCarousel!
-    
     @IBOutlet weak var itemsCountLabel: UILabel!
-    @IBOutlet weak var arcLabel: UILabel!
-    @IBOutlet weak var radiusLabel: UILabel!
-    @IBOutlet weak var spacingLabel: UILabel!
     @IBOutlet weak var visibleItemsLabel: UILabel!
+    @IBOutlet weak var arcTextField: UITextField!
+    @IBOutlet weak var radiusTextField: UITextField!
+    @IBOutlet weak var spacingTextField: UITextField!
     
     // MARK: - Private variables
     private let vm = CarouselViewModel()
@@ -31,13 +30,21 @@ class CarouselViewController: UIViewController {
     
     // MARK: - IBActions
     @IBAction func increaseCount(_ sender: UIButton) {
+        view.endEditing(true)
         vm.updateCount(tag: sender.tag, isIncrease: true) { [weak self] in
             self?.updateIndicators()
         }
     }
     
     @IBAction func decreaseCount(_ sender: UIButton) {
+        view.endEditing(true)
         vm.updateCount(tag: sender.tag, isIncrease: false) { [weak self] in
+            self?.updateIndicators()
+        }
+    }
+    
+    @IBAction func valueChanged(_ sender: UITextField) {
+        vm.textFieldValueUpdated(with: sender.text, tag: sender.tag) { [weak self] in
             self?.updateIndicators()
         }
     }
@@ -45,9 +52,9 @@ class CarouselViewController: UIViewController {
     // MARK: - Private funcs
     private func updateIndicators() {
         itemsCountLabel.text = vm.items.description
-        arcLabel.text = String(format: "%.1f", vm.arc)
-        radiusLabel.text = String(format: "%.1f", vm.radius)
-        spacingLabel.text = String(format: "%.1f", vm.spacing)
+        arcTextField.text = String(format: "%.1f", vm.arc)
+        radiusTextField.text = String(format: "%.1f", vm.radius)
+        spacingTextField.text = String(format: "%.1f", vm.spacing)
         visibleItemsLabel.text = vm.visibleItems.description
         
         carouselView.reloadData()
@@ -89,8 +96,8 @@ extension CarouselViewController: iCarouselDataSource {
                   withDefault value: CGFloat) -> CGFloat {
         switch option {
         case .arc: return CGFloat(2 * CFloat.pi) * vm.arc
-        case .radius: return value * vm.radius
-        case .spacing: return value * vm.spacing
+        case .radius: return vm.radius
+        case .spacing: return vm.spacing
         case .visibleItems: return vm.visibleItems
         case .wrap: return CarouselConstants.wrap
         default: return value

@@ -12,9 +12,9 @@ class CarouselViewModel {
     
     // MARK: - Public variables
     public var items: Int = 3
-    public var arc: CGFloat = 0
-    public var radius: CGFloat = 0
-    public var spacing: CGFloat = 0
+    public var arc: CGFloat = 1
+    public var radius: CGFloat = 1
+    public var spacing: CGFloat = 1
     public var visibleItems: CGFloat = 5
     
     // MARK: - Public funcs
@@ -30,6 +30,20 @@ class CarouselViewModel {
             spacing = isIncrease ? spacing + 0.1 : spacing - 0.1
         case .visible:
             visibleItems = isIncrease ? visibleItems + 1 : visibleItems - 1
+        }
+        completion()
+    }
+    
+    public func textFieldValueUpdated(with text: String?, tag: Int, completion: @escaping () -> ()) {
+        guard let textValue = text, let newValue = Double(textValue) else { return }
+        switch CarouselSettings(rawValue: tag) {
+        case .arc:
+            arc = CGFloat(newValue)
+        case .radius:
+            radius = CGFloat(newValue)
+        case .spacing:
+            spacing = CGFloat(newValue)
+        default: break
         }
         completion()
     }
