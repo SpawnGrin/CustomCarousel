@@ -112,10 +112,10 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="1" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3dJ-Eu-HPy">
-                                                <rect key="frame" x="195" y="28" width="24" height="24"/>
+                                            <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="1" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3dJ-Eu-HPy">
+                                                <rect key="frame" x="167" y="28" width="80" height="24"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="24" id="3MN-NB-UkH"/>
+                                                    <constraint firstAttribute="width" constant="80" id="3MN-NB-UkH"/>
                                                     <constraint firstAttribute="height" constant="24" id="Yrb-eb-cns"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="32"/>
@@ -171,14 +171,17 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="1" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AcB-il-msO">
-                                                <rect key="frame" x="195" y="28.5" width="24" height="24"/>
+                                            <textField opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="1" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AcB-il-msO">
+                                                <rect key="frame" x="167" y="28.5" width="80" height="24"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="24" id="FVP-9B-Twd"/>
-                                                    <constraint firstAttribute="width" constant="24" id="k63-IU-5IG"/>
+                                                    <constraint firstAttribute="width" constant="80" id="k63-IU-5IG"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="32"/>
                                                 <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <action selector="valueChanged:" destination="l6a-Yl-0NL" eventType="editingDidEnd" id="30R-2f-nMq"/>
+                                                </connections>
                                             </textField>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -227,14 +230,17 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="1" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2qh-g0-Fvh">
-                                                <rect key="frame" x="195" y="28.5" width="24" height="24"/>
+                                            <textField opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="1" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2qh-g0-Fvh">
+                                                <rect key="frame" x="167" y="28.5" width="80" height="24"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="24" id="UGj-2c-zAR"/>
+                                                    <constraint firstAttribute="width" constant="80" id="UGj-2c-zAR"/>
                                                     <constraint firstAttribute="height" constant="24" id="meb-I3-dSo"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="32"/>
                                                 <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <action selector="valueChanged:" destination="l6a-Yl-0NL" eventType="editingDidEnd" id="C6o-EE-X3e"/>
+                                                </connections>
                                             </textField>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -305,6 +311,13 @@
                                     </view>
                                 </subviews>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dlw-Yf-iWN">
+                                <rect key="frame" x="158.5" y="759.5" width="97" height="30"/>
+                                <state key="normal" title="Finish editting"/>
+                                <connections>
+                                    <action selector="finishEdittingButtonPressed:" destination="l6a-Yl-0NL" eventType="touchUpInside" id="MBC-dh-cOx"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -314,6 +327,8 @@
                             <constraint firstItem="sBf-ru-LoT" firstAttribute="leading" secondItem="qrg-bV-3tI" secondAttribute="leading" id="QaX-5y-ie4"/>
                             <constraint firstItem="WjH-WN-Ega" firstAttribute="top" secondItem="sBf-ru-LoT" secondAttribute="bottom" id="cPB-Tk-pdx"/>
                             <constraint firstItem="WjH-WN-Ega" firstAttribute="leading" secondItem="qrg-bV-3tI" secondAttribute="leading" id="omj-JF-8fS"/>
+                            <constraint firstItem="Dlw-Yf-iWN" firstAttribute="top" secondItem="WjH-WN-Ega" secondAttribute="bottom" constant="40" id="reS-4D-gfK"/>
+                            <constraint firstItem="Dlw-Yf-iWN" firstAttribute="centerX" secondItem="qrg-bV-3tI" secondAttribute="centerX" id="v2p-dz-DqC"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="qrg-bV-3tI"/>
                     </view>

@@ -30,14 +30,12 @@ class CarouselViewController: UIViewController {
     
     // MARK: - IBActions
     @IBAction func increaseCount(_ sender: UIButton) {
-        view.endEditing(true)
         vm.updateCount(tag: sender.tag, isIncrease: true) { [weak self] in
             self?.updateIndicators()
         }
     }
     
     @IBAction func decreaseCount(_ sender: UIButton) {
-        view.endEditing(true)
         vm.updateCount(tag: sender.tag, isIncrease: false) { [weak self] in
             self?.updateIndicators()
         }
@@ -47,6 +45,10 @@ class CarouselViewController: UIViewController {
         vm.textFieldValueUpdated(with: sender.text, tag: sender.tag) { [weak self] in
             self?.updateIndicators()
         }
+    }
+    
+    @IBAction func finishEdittingButtonPressed(_ sender: UIButton) {
+        view.endEditing(true)
     }
     
     // MARK: - Private funcs
